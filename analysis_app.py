@@ -25,8 +25,9 @@ from langchain.llms import OpenAI
 
 load_dotenv()
 
-usage_model = joblib.load('usage_model_class.joblib')
-data_type_model = joblib.load('data_type_model_class.joblib')
+usage_model = joblib.load('models/usage_model_class_v2.joblib')
+data_type_model = joblib.load('models/data_type_model_class_v2.joblib')
+retention_model = joblib.load('models/retention_model_class_v2.joblib')
 
 embeddings = OpenAIEmbeddings()
 llm = OpenAI(temperature=0)
@@ -57,7 +58,11 @@ def run_check():
     text = st.session_state["contract_text"]
     db = make_db_from_input(text)
 
-    tab_models = [(tab2, data_type_model), (tab3, usage_model)]
+    tab_models = [
+        (tab2, data_type_model), 
+        (tab3, usage_model),
+        (tab4, retention_model),
+    ]
     for tab, model in tab_models:
         with tab:
             clusters, tokens = model.predict(db)[:2]
@@ -76,7 +81,12 @@ def run_check():
                         st.text(token)
 
 
-tab1, tab2, tab3 = st.tabs(["Contract", "Data Collected", "Data Usage"])
+tab1, tab2, tab3, tab4 = st.tabs([
+    "Contract", 
+    "Data Collected", 
+    "Data Usage",
+    "Data Retention",
+    ])
 
 with tab1, st.form("config_form"):
     st.text("Make sure each pargraphs are separated by <br><br>")
