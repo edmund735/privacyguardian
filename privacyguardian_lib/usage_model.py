@@ -74,7 +74,7 @@ class UsagePredictor:
 
         this_umap = self.umap.transform(np.array(embeds))
         this_cluster, _ = hdbscan.approximate_predict(self.clusterer, this_umap)
-        return this_cluster
+        return this_cluster, splited, embeds
 
 
 # plt.scatter(t_umap[:,0], t_umap[:,1], c=t_cluster)
