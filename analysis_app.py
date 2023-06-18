@@ -32,7 +32,8 @@ retention_model = joblib.load('models/retention_model_class_v3.joblib')
 embeddings = OpenAIEmbeddings()
 llm = OpenAI(temperature=0)
 
-st.title("Is there hidden devil lurking in the details of your contract?")
+st.title("Bust Hidden Devils")
+st.subheader("Are there devils hiding in your contract's details?")
 
 
 def make_db_from_input(input_text):
