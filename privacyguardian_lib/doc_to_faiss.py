@@ -15,6 +15,8 @@ load_dotenv()
 embeddings = OpenAIEmbeddings()
 llm = OpenAI(temperature=0)
 
+with open("data_index.json", "r") as f:
+    data_index = json.load(f)
 
 def make_data_path(index_number):
     return os.path.join(
@@ -40,9 +42,6 @@ def make_faiss_db(input_file):
 
 
 if __name__ == "__main__":
-    with open("data_index.json", "r") as f:
-        data_index = json.load(f)
-
     for i in data_index.keys():
         p = make_data_path(i)
         make_faiss_db(p)
