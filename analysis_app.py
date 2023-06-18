@@ -40,7 +40,7 @@ def make_db_from_input(input_text):
 
     current_datetime = datetime.datetime.now()
     current_datetime_string = current_datetime.strftime('%Y-%m-%d %H:%M:%S')
-    tmp_path = f'{current_datetime_string}.txt'
+    tmp_path = f'temp_files/{current_datetime_string}.txt'
     with open(tmp_path, 'w') as f:
         f.write(input_text)
 
@@ -82,7 +82,7 @@ def run_check():
 
 
 tab1, tab2, tab3, tab4 = st.tabs([
-    "Contract", 
+    "Agreement", 
     "Data Collected", 
     "Data Usage",
     "Data Retention",
@@ -92,3 +92,11 @@ with tab1, st.form("config_form"):
     st.text("Make sure each pargraphs are separated by <br><br>")
     st.text_area("Enter contract here:", key="contract_text")
     st.form_submit_button(label="Check!", on_click=run_check)
+
+with tab1:
+    with st.expander('Respond to Agreement'):
+        st.button('Accept')
+        st.button('Accept but leave a statement of objection')
+        st.button('Decline')
+
+        st.text_input('Statement of Objection:')
