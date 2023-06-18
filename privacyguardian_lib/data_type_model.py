@@ -26,7 +26,7 @@ def p_usage(i):
 
 def query_data_type_collected(doc_db):
     query = """
-    what is the personal information used for?
+    what personal information is collected?
     """
 
     docs = doc_db.similarity_search(query)
