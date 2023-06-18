@@ -36,7 +36,7 @@ def query_retention(doc_db):
         f"""
     what is the retention policy?
 
-    Choose one duration from: 1 month, 3 months, as long as it takes, unspecified
+    Present duration this way: (number) (unit of time), or: as long as it takes, or: unspecified
 
     return the duration as a string under 5 words without line breaks
 
