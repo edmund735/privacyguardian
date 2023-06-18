@@ -17,7 +17,12 @@ st.write("Types of data this company collects: " + data_coll)
 st.write("Retention policy: " + ret_pol)
 st.write("Intrusiveness score: " + intr_score)
 
-st.button('Accept')
-st.button('Accept and leave a statement of objection')
-# implement stuff for autogeneration of statement of obj
-st.button('Decline')
+if st.button('Accept'):
+    st.write("Terms of agreement accepted.")
+elif st.button('Decline'):
+    st.write("Terms of agreement declined.")
+elif st.button('Accept and leave a statement of objection'):
+    st.write("What data do you not want to have collected?")
+    bad_data = st.text_input('Data objections:')
+    bad_ret = st.text_input('Retention objections:')
+    
