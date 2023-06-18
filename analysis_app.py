@@ -25,9 +25,9 @@ from langchain.llms import OpenAI
 
 load_dotenv()
 
-usage_model = joblib.load('models/usage_model_class_v2.joblib')
-data_type_model = joblib.load('models/data_type_model_class_v2.joblib')
-retention_model = joblib.load('models/retention_model_class_v2.joblib')
+usage_model = joblib.load('models/usage_model_class_v3.joblib')
+data_type_model = joblib.load('models/data_type_model_class_v3.joblib')
+retention_model = joblib.load('models/retention_model_class_v3.joblib')
 
 embeddings = OpenAIEmbeddings()
 llm = OpenAI(temperature=0)
